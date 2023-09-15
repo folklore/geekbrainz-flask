@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    {{ category.title }} / Categories / {{ super() }}
+{% endblock %}
+
+{% block content %}
+<h1>{{ category.title }} / Categories</h1>
+<div class="card mb-4">
+    <a href="{{ url_for('categories') }}">Back</a>
+</div>
+{% endblock %}

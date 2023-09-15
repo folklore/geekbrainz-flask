@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Categories - {{ super() }}
+{% endblock %}
+
+{% block content %}
+<h1>Categories</h1>
+
+{% for category in categories %}
+    <div class="card hover-a mb-4">
+        <div class="card-body">
+            <h2 class="card-title">
+                <a href="{{ url_for('category', category_id=category.id) }}">{{ category.title }}</a>
+            </h2>
+        </div>
+    </div>
+{% endfor %}
+{% endblock %}
