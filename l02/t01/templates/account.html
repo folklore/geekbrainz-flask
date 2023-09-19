@@ -1,0 +1,9 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  {{ title }} - {{ super() }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="ui header">{{ full_name }}</h1>
+{% endblock %}
