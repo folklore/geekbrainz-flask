@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  {{ title }} - {{ super() }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="ui header">Home</h1>
+
+  <table class="ui celled table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>e-Mail</th>
+        <th>Pass hash</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in users %}
+        <tr>
+          <td>{{ user.name }}</td>
+          <td>{{ user.surname }}</td>
+          <td>{{ user.e_mail }}</td>
+          <td>{{ user.passhash }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
