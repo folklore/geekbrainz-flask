@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.3/semantic.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/htmx/1.9.6/htmx.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.3/semantic.min.css" />
+
+  <title>Users</title>
+
+  <style type="text/css">
+    tr.htmx-swapping td {
+      opacity: 0;
+      transition: opacity 1s ease-out;
+    }
+  </style>
+</head>
+<body class="ui container" style="padding-top: 1em;">
+
+<h1 class="ui header">Users</h1>
+
+<table class="ui celled selectable table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>e-Mail</th>
+      <th class="collapsing"></th>
+    </tr>
+  </thead>
+  <tbody hx-confirm="Are you sure?" hx-target="closest tr" hx-swap="outerHTML swap:1s">
+    {% for user in users %}<tr>
+      <td>{{ user.name }}</td>
+      <td>{{ user.email }}</td>
+      <td>
+        <button class="ui red basic mini button" hx-delete="/users/{{ user.id }}">
+          Delete
+        </button>
+      </td>
+    </tr>{% endfor %}
+  </tbody>
+</table>
+
+<hr>
+
+<form method="post" action="/users/" class="ui segment form">
+  <div class="field">
+    <label for="name">Name</label>
+    <input id="name" type="text" name="name">
+  </div>
+
+  <div class="field">
+    <label for="email">e-Mail</label>
+    <input id="email" type="email" name="email">
+  </div>
+
+  <div class="field">
+    <button type="submit" class="ui basic green button">Create User</button>
+  </div>
+</form>
+
+</body>
+</html>
